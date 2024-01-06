@@ -20,6 +20,7 @@ export default function Header() {
                                 <Link to="#" className="nav-link">Profile</Link>
                             </li>
                         </ul>
+                        
                     </div>
                 </div>
             </nav>
