@@ -1,0 +1,29 @@
+.nav-menu {
+    position: absolute;
+    width: 240px;
+    left: -500px;
+}
+
+.nav-menu.active{
+    position: absolute;
+    left: 0px;
+    z-index: 1;
+    transition: .7s ease-in-out;
+    top: -60px;
+}
+
+a.showIcon {
+    font-size: 30px;
+    padding-left: 15px;
+}
+
+a.nav-link.close-button {
+    font-size: 30px;
+    padding-right: 5px;
+}
+
+.text-white.p-0 {
+    width: 70px;
+    position: relative;
+    top: -90px;
+}
