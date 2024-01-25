@@ -6,11 +6,13 @@ import { MdDelete } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { IoMdArrowRoundBack } from "react-icons/io";
 
+
 function Cart() {
-  const { items, total, increaseQty, decreaseQty, removeItem } =
+  const { items, total, increaseQty, decreaseQty, removeItem,clearCart } =
     useContext(CartContext);
 
   useEffect(() => {}, [items]);
+
 
   return (
     <Layout>
@@ -66,7 +68,7 @@ function Cart() {
                         <CiCirclePlus onClick={() => increaseQty(item.id)} />
                       </div>
                     </td>
-                    <td>{item.price}</td>
+                    <td><b>{item.price}</b></td>
                     <td>{Math.ceil(item.price * item.qty)}</td>
                     <td>
                       <button onClick={() => removeItem(item.id)}>
@@ -87,14 +89,14 @@ function Cart() {
                   <thead>
                     <tr>
                       <th scope="col">Delivery</th>
-                      <td scope="col" className="text-right">
-                        30 PKR
+                      <td scope="col" className="text-right h5">
+                        $30
                       </td>
                     </tr>
                     <tr>
                       <th scope="col">Total</th>
-                      <td scope="col" className="text-right">
-                        {total} PKR
+                      <td scope="col" className="text-right text-warning h5">
+                        <b>${total}</b>
                       </td>
                     </tr>
                   </thead>
@@ -103,6 +105,10 @@ function Cart() {
                   Checkout
                 </Link>
               </div>
+            </div>
+            <div className="row">
+              <button className="btn btn-dark mt-3 col-11 ml-4" onClick={() => clearCart()}>Clear Cart</button>
+
             </div>
           </div>
         </div>

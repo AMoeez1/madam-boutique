@@ -4,7 +4,6 @@ import GreenTShirt1 from '../assets/Products/GreenTShirt1.webp'
 import WhiteTShirt1 from '../assets/Products/WhiteTShirt1.jfif'
 import PinkShirt1 from '../assets/Products/PinkShirt1.jfif'
 
-
 const SaleProducts = [
     {
         id: 'a45s412dsgf89as4521dadsatu1tlk3mnb',

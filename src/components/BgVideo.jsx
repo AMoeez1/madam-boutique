@@ -6,7 +6,7 @@ function BgVideo() {
         // zIndex: -1,
         width: '100%',
         height:'auto',
-        objectFit: 'cover',
+        objectFit: 'contain',
     }
   return (
     <div>

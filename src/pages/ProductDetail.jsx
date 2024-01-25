@@ -1,9 +1,10 @@
 // import Black from '../assets/Products/BlackPant1.jpg'
 import Layout from '../components/Layout'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import ProductsData from '../data/ProductsData'
 import { useContext, useEffect, useState } from 'react'
 import { CartContext } from '../context/CartContext'
+import { IoMdArrowRoundBack } from "react-icons/io";
 import { toast } from 'react-toastify'
 
 function ProductDetail() {
@@ -31,6 +32,15 @@ function ProductDetail() {
 	return (
 		<Layout>
 			<div className="container">
+			<div className="flex justify-between">
+          <Link
+            className="h3 my-4 d-flex align-items-center gap-1"
+            to={`/products`}
+          >
+            <IoMdArrowRoundBack className="text-xl"/>
+            <span className="text-xl">Go Back</span>
+          </Link>
+        </div>
 				<div className="row my-5">
 					<h1 className="h1 text-center my-4">See Product Detail Here</h1>
 					<div className="card col-12">
