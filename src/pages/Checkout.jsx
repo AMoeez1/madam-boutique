@@ -18,6 +18,7 @@ function Payment() {
   const [cvv, setCvv] = useState("");
 
   const handleSubmit = (event) => {
+    event.preventDefault()
     if (name.length == 0) {
       toast("Enter Name");
       event.preventDefault();
@@ -48,7 +49,7 @@ function Payment() {
           </Link>
         </div>
         <h3 className="h3 text-center mt-4">Checkout</h3>
-        <form action="" onSubmit={() => handleSubmit()}>
+        <form onSubmit={() => handleSubmit()}>
           <div className="d-flex justify-content-center">
             <div className="p-4 mb-4 col-lg-4 col-sm-8 col-12 bg-dark rounded text-white">
               <h4 className="h4 py-4 text-center text-warning">Card Detail</h4>
