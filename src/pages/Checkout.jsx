@@ -26,12 +26,12 @@ function Payment() {
     }
 
     if (!cardNo) {
-      toast.error("Enter name");
+      toast.error("Enter Card No");
       return;
     }
 
     if (!cvv) {
-      toast.error("Enter name");
+      toast.error("Enter CVV");
       return;
     }
 

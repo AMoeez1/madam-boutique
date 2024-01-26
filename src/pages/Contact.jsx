@@ -18,7 +18,7 @@ function Contact() {
           <h4 className="h4 text-center">
             You can solve your problems by the following method
           </h4>
-          <div className="row mb-5">
+          <div className="row justify-content-center mb-5">
             <div className="card rounded-full border-secondary contact-card col-lg-3 col-md-3 col-sm-5 col-10 my-3 mx-2">
               <div className="contact-img d-flex justify-center mt-4">
                 <img
@@ -70,7 +70,7 @@ function Contact() {
               </div>
               <div className="card-body text-center">
                 <h4 className="card-title text-secondary h4">
-                  Chat with our agent
+                  Check Our FAQ&#39;s page
                 </h4>
                 <b className="card-text">
                   You can check our{" "}
@@ -84,7 +84,7 @@ function Contact() {
             <div className="col-lg-6 mx-auto">
               <div className="text-center">
                 <h2 className="h2 rounded-3xl">
-                  Still, didn't get the solution?
+                  Still, didn&#39;t get the solution?
                 </h2>
                 <h4 className="h5 mb-5">
                   Fill the form let us know about the problem you have been
