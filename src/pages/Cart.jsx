@@ -40,7 +40,7 @@ function Cart() {
                 </tr>
               </thead>
               <tbody>
-                {items?.map((item) => (
+                {items.length > 0 && items?.map((item) => (
                   <tr key={item.id}>
                     <th>
                       <div className="flex gap-x-3">
@@ -77,6 +77,14 @@ function Cart() {
                     </td>
                   </tr>
                 ))}
+
+                {
+                  items?.length <= 0 && (
+                    <tr>
+                      <td colSpan={5} className="text-center text-2xl p-3">Your cart is empty</td>
+                    </tr>
+                  )
+                }
               </tbody>
             </table>
           </div>

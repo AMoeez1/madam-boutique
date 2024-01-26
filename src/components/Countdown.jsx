@@ -1,57 +1,64 @@
 import { useEffect, useState } from "react";
-import { BiSolidDiscount } from "react-icons/bi";
-import { GiStopwatch } from "react-icons/gi";
-
+import SaleBanner from "../assets/sale-bg.jpg";
 
 function Countdown() {
-    const [days, setDays] = useState(0);
-    const [hours, setHours] = useState(0);
-    const [mins, setMins] = useState(0);
-    const [secs, setSecs] = useState(0);
+  const [days, setDays] = useState(0);
+  const [hours, setHours] = useState(0);
+  const [mins, setMins] = useState(0);
+  const [secs, setSecs] = useState(0);
 
-    const date = 'January, 29, 2024';
+  const date = "January, 29, 2024";
 
-    const getTime = () => {
-        const time = Date.parse(date) - Date.now();
-        setDays(Math.floor(time / (1000 * 60 * 60 * 24)));
-        setHours(Math.floor(time / (1000 * 60 * 60) / 24))
-        setMins(Math.floor((time / 1000 / 60) % 60));
-        setSecs(Math.floor((time / 1000) % 60))
-    }
+  const getTime = () => {
+    const time = Date.parse(date) - Date.now();
+    setDays(Math.floor(time / (1000 * 60 * 60 * 24)));
+    setHours(Math.floor(time / (1000 * 60 * 60) / 24));
+    setMins(Math.floor((time / 1000 / 60) % 60));
+    setSecs(Math.floor((time / 1000) % 60));
+  };
 
-    useEffect(() => {
-        const interval = setInterval(() => getTime(date), 1000)
-        return () => clearInterval(interval)
-    }), []
-    return (
-        <div className="container mt-5 bg-white py-4">
-            <div className="row">
-                <div className="col-md-3 col-sm-4 col-6">
-                    <h5 className="h4 mr-10 mb-0 gap-1 d-flex"><BiSolidDiscount />On Sale now </h5>
-                </div>
-                <div className="col-md-3 col-sm-4 col-6">
-                    <h5 className="h4 mr-5 mb-0 d-flex gap-1"><GiStopwatch/> Ending On</h5>
-                </div>
-                <div className="col-md-6 col-sm-4 col-10">
-                    <div className="row text-center">
-                        <div className="col-md-2 col-3 mb-0 p-1">
-                            <h1 className="h4 text-primary m-1">{days < 10 ? '0' + days : days}: </h1>
-                        </div>
-                        <div className="col-md-2 col-3 p-1 ">
-                            <h1 className="h4 m-1 text-primary">{hours < 10 ? '0' + hours : hours}: </h1>
-                        </div>
-                        <div className="col-md-2 col-3 p-1">
-                            <h1 className="h4 text-primary m-1">{mins < 10 ? '0' + mins : mins}: </h1>
-                        </div>
-                        <div className="col-md-2 col-3 p-1">
-                            <h1 className="h4 text-primary m-1">{secs < 10 ? '0' + secs : secs} </h1>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
+  useEffect(() => {
+    const interval = setInterval(() => getTime(date), 1000);
+    return () => clearInterval(interval);
+  }),
+    [];
+  return (
+    <div className="mt-5 bg-white">
+      <div className="grid grid-cols-2">
+        <div className="col-span-2 md:col-span-1">
+          <img src={SaleBanner} className="w-full h-full" />
         </div>
-    )
+        <div className="col-span-2 md:col-span-1 my-5 md:my-0">
+          <div className="grid grid-flow-col flex-wrap md:flex-nowrap gap-5 text-center auto-cols-max h-full justify-center items-center">
+            <div className="flex flex-col relative countdown-section">
+              <span className="text-lg md:text-5xl bg-gray-50 mb-3 h-14 w-14 md:h-24 md:w-24 flex items-center justify-center rounded-md shadow-sm">
+                <span>{days}</span>
+              </span>
+              Days
+            </div>
+            <div className="flex flex-col relative countdown-section">
+              <span className="text-lg md:text-5xl bg-gray-50 mb-3 h-14 w-14 md:h-24 md:w-24 flex items-center justify-center rounded-md shadow-sm">
+                <span>{hours}</span>
+              </span>
+              Hours
+            </div>
+            <div className="flex flex-col relative countdown-section">
+              <span className="text-lg md:text-5xl bg-gray-50 mb-3 h-14 w-14 md:h-24 md:w-24 flex items-center justify-center rounded-md shadow-sm">
+                <span>{mins}</span>
+              </span>
+              Mins
+            </div>
+            <div className="flex flex-col relative countdown-section">
+              <span className="text-lg md:text-5xl bg-gray-50 mb-3 h-14 w-14 md:h-24 md:w-24 flex items-center justify-center rounded-md shadow-sm">
+                <span>{secs}</span>
+              </span>
+              Sec
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export default Countdown;

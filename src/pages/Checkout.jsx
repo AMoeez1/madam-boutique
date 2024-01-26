@@ -1,14 +1,14 @@
-import {
-  FaCcMastercard,
-  FaCcVisa,
-  FaCcPaypal,
-  FaCcAmazonPay,
-} from "react-icons/fa6";
-import Layout from "../components/Layout";
 import { useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
-import { Link, useNavigate } from "react-router-dom";
+import {
+  FaCcAmazonPay,
+  FaCcMastercard,
+  FaCcPaypal,
+  FaCcVisa,
+} from "react-icons/fa6";
 import { IoMdArrowRoundBack } from "react-icons/io";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import Layout from "../components/Layout";
 
 function Payment() {
   const navigate = useNavigate();
@@ -18,22 +18,25 @@ function Payment() {
   const [cvv, setCvv] = useState("");
 
   const handleSubmit = (event) => {
-    event.preventDefault()
-    if (name.length == 0) {
-      toast("Enter Name");
-      event.preventDefault();
-    } else {
-      navigate("/");
+    event.preventDefault();
+
+    if (!name) {
+      toast.error("Enter name");
+      return;
     }
 
-    if (cardNo.length == 0) {
-      ToastContainer("Enter Card Number");
+    if (!cardNo) {
+      toast.error("Enter name");
+      return;
     }
 
-    if (cvv == 0) {
-      toast("Enter CVV Number");
-      event.preventDefault();
+    if (!cvv) {
+      toast.error("Enter name");
+      return;
     }
+
+    toast.success('Order Placed')
+    navigate('/')
   };
 
   return (
@@ -49,57 +52,62 @@ function Payment() {
           </Link>
         </div>
         <h3 className="h3 text-center mt-4">Checkout</h3>
-        <form onSubmit={() => handleSubmit()}>
+        <form onSubmit={handleSubmit}>
           <div className="d-flex justify-content-center">
-            <div className="p-4 mb-4 col-lg-4 col-sm-8 col-12 bg-dark rounded text-white">
-              <h4 className="h4 py-4 text-center text-warning">Card Detail</h4>
-              <p className="text-center">
-                <b>Card type</b>
-              </p>
-              <div className="card-type mt-2 gap-2 h2 d-flex justify-content-center cursor-pointer">
+            <div className="p-4 mb-4 col-lg-4 col-sm-8 col-12 rounded-md shadow-md bg-white">
+              <div className="card-type my-3 gap-2 h2 d-flex justify-content-center cursor-pointer">
                 <FaCcMastercard />
                 <FaCcVisa />
                 <FaCcPaypal />
                 <FaCcAmazonPay />
               </div>
-              <div className="form-group m-3">
-                <label htmlFor="name">Card Holder Name</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  name="name"
-                  placeholder="Card Holder Name"
-                  defaultValue={name}
-                  onChange={(event) => setName(event.target.value)}
-                />
-                <label htmlFor="CardNum">Card Number</label>
-                <input
-                  type="number"
-                  className="form-control"
-                  name="CardNum"
-                  placeholder="Card Number"
-                  defaultValue={cardNo}
-                  onChange={(event) => setCardNo(event.target.value)}
-                />
-                <label htmlFor="Expiration">Expiration</label>
-                <div className="d-flex">
+              <div className="form-group mt-3">
+                <div className="my-3">
+                  <label htmlFor="name">Card Holder Name</label>
                   <input
-                    type="date"
+                    type="text"
                     className="form-control"
-                    name="Expiration"
-                    placeholder="Card Expiry Date Name"
-                  />
-                  <input
-                    type="number"
-                    className="form-control mx-2 "
-                    name="CVV"
-                    placeholder="Enter CVV"
-                    defaultValue={cvv}
-                    onChange={(event) => setCvv(event.target.value)}
+                    name="name"
+                    placeholder="Card Holder Name"
+                    defaultValue={name}
+                    onChange={(event) => setName(event.target.value)}
                   />
                 </div>
-                <button type="submit" className="btn btn-light text-white mt-2">
-                  Place Order
+                <div className="my-3">
+                  <label htmlFor="CardNum">Card Number</label>
+                  <input
+                    type="number"
+                    className="form-control"
+                    name="CardNum"
+                    placeholder="Card Number"
+                    defaultValue={cardNo}
+                    onChange={(event) => setCardNo(event.target.value)}
+                  />
+                </div>
+                <div className="my-3">
+                  <label htmlFor="Expiration">Expiration</label>
+                  <div className="d-flex">
+                    <input
+                      type="date"
+                      className="form-control"
+                      name="Expiration"
+                      placeholder="Card Expiry Date Name"
+                    />
+                    <input
+                      type="number"
+                      className="form-control mx-2 "
+                      name="CVV"
+                      placeholder="Enter CVV"
+                      defaultValue={cvv}
+                      onChange={(event) => setCvv(event.target.value)}
+                    />
+                  </div>
+                </div>
+                <button
+                  type="submit"
+                  className="text-white w-full bg-[#050708] hover:bg-[#050708]/80 focus:ring-4 focus:outline-none focus:ring-[#050708]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center justify-center dark:hover:bg-[#050708]/40 dark:focus:ring-gray-600 me-2 mb-2"
+                >
+                  Pay
                 </button>
               </div>
             </div>
