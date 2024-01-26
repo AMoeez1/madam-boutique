@@ -74,10 +74,11 @@ export const CartProvider = ({ children }) => {
   const removeItem = (id) => {
     const itemIndex = items.findIndex((item) => item.id === id);
     if (itemIndex > -1) {
-      const newItems = items.splice(itemIndex, 1);
-      setItems(newItems);
+        const newItems = [...items];
+        newItems.splice(itemIndex, 1);
+        setItems(newItems);
     }
-  };
+};
 
   const getTotalPrice = () => {
     let sum = 0;
