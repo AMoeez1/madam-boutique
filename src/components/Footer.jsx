@@ -42,7 +42,7 @@ export default function Footer() {
                             </li>
                         </ul>
                     </div>
-                    <div className="text-center ">
+                    <div className="text-center mt-4">
                         <p className='d-flex justify-center '>{<RiCopyrightLine />}<b>Copyright 2023</b></p>
 
                     </div>
