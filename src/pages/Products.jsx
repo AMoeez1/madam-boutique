@@ -52,7 +52,7 @@ export default function Products() {
               {filterProduct.map((product) => {
                 return (
                   <>
-                    <ProductItem product={product} md={4} cols={6} />
+                    <ProductItem product={product} md={4} cols={12} />
                   </>
                 );
               })}

@@ -13,6 +13,7 @@ import Countdown from "./Countdown.jsx";
 import { FiShoppingCart } from "react-icons/fi";
 import { useContext } from "react";
 import { CartContext } from "../context/CartContext.jsx";
+import { clsx } from "clsx";
 
 function HomeProducts() {
   const Recommend = RecommendedData;
@@ -70,6 +71,20 @@ export default HomeProducts;
 export const ProductItem = ({ product, sm = 4, md = 2, cols = 5 }) => {
   const { addItemToCart } = useContext(CartContext);
 
+  const bgMap = {
+    pink: "bg-pink-200",
+    green: "bg-green-200",
+    blue: "bg-blue-200",
+    purple: "bg-purple-200",
+  }
+
+  const ringMap = {
+    pink: "peer-checked:ring-pink-400",
+    green: "peer-checked:ring-green-400",
+    blue: "peer-checked:ring-blue-400",
+    purple: "peer-checked:ring-purple-400",
+  }
+
   return (
     <div className={`product-card col-md-${md} col-sm-${sm} col-${cols} mb-4 `}>
       <div className="shadow-md rounded-2xl bg-white">
@@ -99,7 +114,7 @@ export const ProductItem = ({ product, sm = 4, md = 2, cols = 5 }) => {
             </p>
             <Link className="text-xs text-gray-500">{product.brand}</Link>
           </div>
-          <div className="flex justify-between items-center">
+          <div className="flex justify-between items-center flex-wrap md:flex-nowrap">
             <div className="flex justify flex-start mt-3 gap-x-1">
               {["pink", "green", "blue", "purple"].map((item, index) => (
                 <label
@@ -113,7 +128,7 @@ export const ProductItem = ({ product, sm = 4, md = 2, cols = 5 }) => {
                     className="peer hidden"
                   />
                   <span
-                    className={`w-8 h-8 inline-block rounded-full bg-${item}-200 peer-checked:ring-${item}-400 peer-checked:ring-2 cursor-pointer`}
+                    className={`w-8 h-8 inline-block rounded-full ${bgMap[item]} ${ringMap[item]} peer-checked:ring-2 cursor-pointer`}
                   ></span>
                 </label>
               ))}
