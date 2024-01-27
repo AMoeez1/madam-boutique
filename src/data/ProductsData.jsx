@@ -41,8 +41,6 @@ import handbag1 from '../assets/Products/handbag1.jpg'
 import handbag2 from '../assets/Products/handbag2.jpg'
 import handbag3 from '../assets/Products/handbag3.jpg'
 import Redhandbag1 from '../assets/Products/REdHandbag1.jpg'
-import GrayHandBag1 from '../assets/Products/GrayHandBag1.jpg'
-
 
 // Pants
 import PinkPant1 from '../assets/Products/PinkPant1.jpg'
