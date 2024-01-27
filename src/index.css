@@ -7,3 +7,14 @@
 body {
   font-family: "Poppins", sans-serif;
 }
+
+
+.collapse:not(.show) {
+  display: none;
+  visibility: visible;
+}
+
+.collapse.show {
+  display: block;
+  visibility: visible;
+}

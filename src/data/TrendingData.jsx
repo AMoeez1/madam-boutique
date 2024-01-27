@@ -55,18 +55,6 @@ const TrendingData = [
         brand: "Louis Vuitton",
         image: GreenJacket1,
       },
-
-      {
-        id: 'a45s412dsgf89sadsaf74d5451tlk3mnbrefdf',
-        name: "Yellow Cargo Jacket",
-        alt: "Yellow Cargo Jacket",
-        category: "Jackets",
-        price: 89.99,
-        delPrice: 99.99,
-        color: "Yellow",
-        brand: "Nike",
-        image: YellowJacket1,
-      },
 ]
 
 export default TrendingData
