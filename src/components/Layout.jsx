@@ -5,7 +5,7 @@ import Footer from './Footer'
 
 export default function Layout({ children }) {
     return (
-        <div className='bg-light'>
+        <div className='bg-[#fcfcfc]'>
             <Navbar/>
             {children}
             <Footer />
