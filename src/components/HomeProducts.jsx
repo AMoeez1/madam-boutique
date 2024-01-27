@@ -10,52 +10,54 @@ import { BiSolidOffer } from "react-icons/bi";
 import { FaFire } from "react-icons/fa";
 import { MdRecommend } from "react-icons/md";
 import Countdown from "./Countdown.jsx";
+import { FiShoppingCart } from "react-icons/fi";
+import { useContext } from "react";
+import { CartContext } from "../context/CartContext.jsx";
 
 function HomeProducts() {
-  // Decalring VAriable to map the value from the DAta file
   const Recommend = RecommendedData;
   const Trend = TrendData;
   const Sale = SaleData;
 
   return (
-    <div className="container">
+    <div className="container my-5">
       <div className="mt-5">
-        <div className="heading d-flex gap-2 justify-content-center  mb-3">
-          <i className="h2">
-            <MdRecommend />
-          </i>
-          <h3 className="h3">Recommended for you </h3>
-        </div>
-        <div className="row justify-center">
+        <div className="row justify-center bg-white p-3">
+          <div className="col-12">
+            <div className="heading d-flex gap-2 justify-content-center my-3">
+              <MdRecommend className="text-4xl" />
+              <h3 className="h3">Recommended for you </h3>
+            </div>
+          </div>
           {Recommend.map((item) => (
-            <ProductItem key={item.id} product={item} />
+            <ProductItem key={item.id} product={item} md={3} />
           ))}
         </div>
       </div>
       <div className="mt-5">
-        <div className="heading d-flex gap-2 justify-content-center  mb-3">
-          <i className="h2">
-            <FaFire />
-          </i>
-          <h3 className="h3">Trending Products</h3>
-        </div>
-        <div className="row justify-center">
+        <div className="row justify-center bg-white p-3">
+          <div className="col-12">
+            <div className="heading d-flex gap-2 justify-content-center my-3">
+              <FaFire className="text-4xl" />
+              <h3 className="h3">Trending Products</h3>
+            </div>
+          </div>
           {Trend.map((item) => (
-            <ProductItem key={item.id} product={item} />
+            <ProductItem key={item.id} product={item} md={3} />
           ))}
         </div>
       </div>
       <Countdown />
       <div className="mt-5">
-        <div className="heading d-flex gap-2 justify-content-center  mb-3">
-          <i className="h2">
-            <BiSolidOffer />
-          </i>
-          <h3 className="h3">On Sale Products</h3>
-        </div>
-        <div className="row justify-center">
+        <div className="row justify-center bg-white p-3">
+          <div className="col-12">
+            <div className="heading d-flex gap-2 justify-content-center my-3">
+              <BiSolidOffer className="text-4xl" />
+              <h3 className="h3">On Sale Products</h3>
+            </div>
+          </div>
           {Sale.map((item) => (
-            <ProductItem key={item.id} product={item} />
+            <ProductItem key={item.id} product={item} md={3} />
           ))}
         </div>
       </div>
@@ -65,34 +67,65 @@ function HomeProducts() {
 
 export default HomeProducts;
 
-const ProductItem = ({ product }) => {
+export const ProductItem = ({ product, sm = 4, md = 2, cols = 5 }) => {
+  const { addItemToCart } = useContext(CartContext);
+
   return (
-    <div className="card products col-md-2 col-sm-4 col-5 bg-white mx-1 mb-4">
-      <NavLink
-        id="RouterNavLink"
-        className="product-link"
-        to={`/products/${product.id}`}
-      >
-        <img
-          className="card-img-top product-img"
-          src={product.image}
-          alt="Product"
-        />
-      </NavLink>
-      <div className="card-body main-card">
-        <NavLink to={`/products/${product.id}`}>
-          <h5 className="card-title ml-2 h6 font-normal">
-           {product.name}
-          </h5>
+    <div className={`product-card col-md-${md} col-sm-${sm} col-${cols} mb-4 `}>
+      <div className="shadow-md rounded-2xl bg-white">
+        <NavLink
+          id="RouterNavLink"
+          className="product-link"
+          to={`/products/${product.id}`}
+        >
+          <img
+            className="card-img-top product-img rounded-tl-2xl rounded-tr-2xl"
+            src={product.image}
+            alt="Product"
+          />
         </NavLink>
-      </div>
-      <div className="body mb-3 d-flex justify-between">
-        <p className="text ml-2 text-warning">
-        ${product.price}
-        </p>
-        <Link className="card-text mr-4 text-gray-500">
-          {product.brand}
-        </Link>
+        <div className="pt-3 pb-4 px-3">
+          <NavLink to={`/products/${product.id}`}>
+            <h5 className="text-xl font-normal truncate mb-2.5">
+              {product.name}
+            </h5>
+          </NavLink>
+          <div className="flex justify-between items-center">
+            <p className="text-xl">
+              ${product.price}
+              <span className="text-xs inline-block ml-2.5 text-red-500 line-through">
+                ${product.delPrice}
+              </span>
+            </p>
+            <Link className="text-xs text-gray-500">{product.brand}</Link>
+          </div>
+          <div className="flex justify-between items-center">
+            <div className="flex justify flex-start mt-3 gap-x-1">
+              {["pink", "green", "blue", "purple"].map((item, index) => (
+                <label
+                  key={`${item}-${index}`}
+                  htmlFor={`${product.id}-${item}`}
+                >
+                  <input
+                    type="radio"
+                    name="color"
+                    id={`${product.id}-${item}`}
+                    className="peer hidden"
+                  />
+                  <span
+                    className={`w-8 h-8 inline-block rounded-full bg-${item}-200 peer-checked:ring-${item}-400 peer-checked:ring-2 cursor-pointer`}
+                  ></span>
+                </label>
+              ))}
+            </div>
+            <button
+              className="btn btn-dark rounded-full text-sm flex justify-center mb-0"
+              onClick={() => addItemToCart(product.id)}
+            >
+              Add to cart
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );
