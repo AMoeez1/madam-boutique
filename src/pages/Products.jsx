@@ -1,7 +1,6 @@
-import { Link, NavLink } from "react-router-dom";
 import "../Style/Products.css";
 import Layout from "../components/Layout";
-import SideBar from "../components/SideBar";
+import SideBar from "../components/Sidebar";
 import productsData from "../data/ProductsData";
 import { useEffect, useState } from "react";
 import { ProductItem } from "../components/HomeProducts";
