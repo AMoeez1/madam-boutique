@@ -7,7 +7,20 @@ An ecommerce site for female clothing and accessories.
 
 ## Installation
 
-Install my-project with npm
+
+
+Clone project
+
+```bash
+  git clone https://github.com/AMoeez1/madam-boutique.git
+```
+
+Cd into directory
+```bash
+  cd madam-boutique
+```
+
+Install dependenices with npm
 
 ```bash
   npm i
@@ -17,12 +30,9 @@ Or
   npm i --force
 ```
 
-Cd into directory
-```bash
-  cd madam-boutique
-```
 Start development serve
 ```bash
   npm run dev
 ```
-    
+
+Enjoy...  
