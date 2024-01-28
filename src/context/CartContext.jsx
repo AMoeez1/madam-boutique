@@ -29,8 +29,8 @@ export const CartProvider = ({ children }) => {
   useEffect(() => {
     if (items.length > 0) {
       localStorage.setItem("cart", JSON.stringify(items));
-      getTotalPrice();
     }
+    getTotalPrice();
   }, [items]);
 
   const addItemToCart = (id) => {
@@ -86,12 +86,14 @@ export const CartProvider = ({ children }) => {
 
   const getTotalPrice = () => {
     let sum = 0;
-    items.map((item) => {
-      sum += item.price * item.qty;
-    });
+    if (items.length > 0) {
+      items.map((item) => {
+        sum += item.price * item.qty;
+      });
 
-    sum += DELIVERY_CHARGES;
-    sum = +(parseFloat(sum).toFixed(2))
+      sum += DELIVERY_CHARGES;
+      sum = +parseFloat(sum).toFixed(2);
+    }
     setTotal(sum);
   };
 
