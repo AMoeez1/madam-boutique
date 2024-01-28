@@ -4,9 +4,9 @@ import Faqs from "../data/faq";
 function About() {
   return (
     <Layout>
-      <div className="container my-5">
+      <div className="container my-5 px-4 md:px-0">
         <div className="aboutSection">
-          <h2 className="text-5xl mb-4">About Madam&#39; Boutique</h2>
+          <h2 className="text-3xl md:text-5xl mb-4">About Madam&#39; Boutique</h2>
           <p className="font-light">
             Welcome to Madam&#39; Boutique, your go-to destination for the
             latest trends in ladies fashion. At our online store, we curate a
@@ -28,7 +28,7 @@ function About() {
           </p>
         </div>
         <section className="mt-5">
-          <h3 className="text-3xl">Frequently Asked Questions</h3>
+          <h3 className="text-3xl md:text-5xl">Frequently Asked Questions</h3>
           <div className="accordion mt-3" id="accordionExample">
             {Faqs.map((item) => (
               <div className="accordion-item" key={item.id}>

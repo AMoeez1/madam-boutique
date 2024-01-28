@@ -6,14 +6,14 @@ import Logo from "../assets/MadamLogo.png";
 export default function Footer() {
   return (
     <div className="bg-white">
-      <div className="container p-3">
+      <div className="container px-8 md:p-3">
         <div className="row pt-2">
-          <div className="col-lg-3 col-12">
+          <div className="col-lg-3 col-12 mb-5">
             <Link to="/">
-              <img src={Logo} width={120} alt="" />
+              <img src={Logo} width={120} alt="" className="mx-auto mx-md-0"/>
             </Link>
           </div>
-          <div className="col-lg-2 col-12">
+          <div className="col-lg-2 col-6">
             <h3 className="text-black inline-block text-xl font-normal pb-1 mb-3 border-b-[3px] border-black">
               Shop
             </h3>
@@ -35,7 +35,7 @@ export default function Footer() {
               </li>
             </ul>
           </div>
-          <div className="col-lg-2 col-12">
+          <div className="col-lg-2 col-6">
             <h3 className="text-black inline-block text-xl font-normal pb-1 mb-3 border-b-[3px] border-black">
               About Us
             </h3>
@@ -57,7 +57,7 @@ export default function Footer() {
               </li>
             </ul>
           </div>
-          <div className="col-lg-2 col-12">
+          <div className="col-lg-2 col-6">
             <h3 className="text-black inline-block text-xl font-normal pb-1 mb-3 border-b-[3px] border-black">
               Resources
             </h3>
@@ -77,14 +77,14 @@ export default function Footer() {
             </ul>
           </div>
           <div className="col-lg-3 col-12">
-            <h3 className="text-black inline-block text-xl font-normal pb-1 mb-3 border-b-[3px] border-black">
+            <h3 className="text-black block text-center md:text-left md:inline-block text-xl font-normal pb-1 mb-3 border-b-[3px] border-black">
               Get in touch
             </h3>
             <p className="font-light">
               Question or feedback ? <br />
               We'd love to hear from you
             </p>
-            <div className="flex items-center mt-4 gap-x-3">
+            <div className="flex justify-center md:justify-start items-center mt-4 gap-x-3">
               <Link
                 to="https://www.facebook.com"
                 target="new"
@@ -117,8 +117,8 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      <div className=" text-center mt-4 bg-gray-100 py-3">
-        <p className="flex justify-center items-center gap-x-2">
+      <div className="text-center mt-4 bg-gray-100 py-3">
+        <p className="flex justify-center items-center gap-x-2 text-sm">
           All Rights Reserved To Madam
           {<RiCopyrightLine />}
           Copyright {new Date().getFullYear()}
