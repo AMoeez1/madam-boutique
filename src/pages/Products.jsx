@@ -27,13 +27,13 @@ export default function Products() {
     <Layout>
       <h1 className="h1 mt-5 text-center">Products</h1>
       {/* <SearchBar/> */}
-      <div className="container">
+      <div className="container px-8 md:px-4">
         <div className="row">
           <div className="col-lg-2">
             <SideBar onChange={handleFilterChange} />
           </div>
           <div className="col-lg-10">
-            <div className="row mt-3">
+            <div className="row mt-3 space-y-2 md:space-y-0">
               <div className="col-md-10">
                 <input type="text" className="form-control py-2.5 placeholder:text-gray-400 placeholder:font-light" placeholder="Search products with name, brand"/>
               </div>

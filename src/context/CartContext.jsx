@@ -19,7 +19,7 @@ export const CartProvider = ({ children }) => {
    */
   useEffect(() => {
     if (localStorage.getItem("cart")) {
-      setItems(JSON.parse(localStorage.getItem("cart"))); 
+      setItems(JSON.parse(localStorage.getItem("cart")));
     }
   }, []);
 
@@ -29,7 +29,7 @@ export const CartProvider = ({ children }) => {
   useEffect(() => {
     if (items.length > 0) {
       localStorage.setItem("cart", JSON.stringify(items));
-      getTotalPrice()
+      getTotalPrice();
     }
   }, [items]);
 
@@ -38,7 +38,6 @@ export const CartProvider = ({ children }) => {
     const newItems = [...items, { ...item, qty: 1 }];
     setItems(newItems);
     toast.success("Item successfully added to cart");
-
   };
 
   /**
@@ -46,7 +45,7 @@ export const CartProvider = ({ children }) => {
    */
   const clearCart = () => {
     setItems([]);
-    localStorage.removeItem('cart')
+    localStorage.removeItem("cart");
     toast.success("Cart cleared");
   };
 
@@ -79,22 +78,22 @@ export const CartProvider = ({ children }) => {
   const removeItem = (id) => {
     const itemIndex = items.findIndex((item) => item.id === id);
     if (itemIndex > -1) {
-        const newItems = [...items];
-        newItems.splice(itemIndex, 1);
-        setItems(newItems);
+      const newItems = [...items];
+      newItems.splice(itemIndex, 1);
+      setItems(newItems);
     }
-};
+  };
 
   const getTotalPrice = () => {
     let sum = 0;
-    items.map((item) =>{
-       sum += item.price * item.qty;
-    }) 
+    items.map((item) => {
+      sum += item.price * item.qty;
+    });
 
-    sum += DELIVERY_CHARGES
-
-    setTotal(Math.ceil(sum))
-  }
+    sum += DELIVERY_CHARGES;
+    sum = +(parseFloat(sum).toFixed(2))
+    setTotal(sum);
+  };
 
   const contextValue = {
     items,

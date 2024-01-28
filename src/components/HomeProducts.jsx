@@ -68,7 +68,7 @@ function HomeProducts() {
 
 export default HomeProducts;
 
-export const ProductItem = ({ product, sm = 4, md = 2, cols = 5 }) => {
+export const ProductItem = ({ product, sm = 4, md = 2, cols = 12 }) => {
   const { addItemToCart } = useContext(CartContext);
 
   const bgMap = {
@@ -134,7 +134,7 @@ export const ProductItem = ({ product, sm = 4, md = 2, cols = 5 }) => {
               ))}
             </div>
             <button
-              className="btn btn-dark rounded-full text-sm flex justify-center mb-0"
+              className="btn btn-dark rounded-full text-sm flex justify-center mb-0 w-full md:w-auto mt-2"
               onClick={() => addItemToCart(product.id)}
             >
               Add to cart

@@ -27,14 +27,9 @@ function ProductDetail() {
     addItemToCart(product.id);
   };
 
-  let style = {
-    height: "500px",
-    objectFit: "cover",
-  };
-
   return (
     <Layout>
-      <div className="container mt-2.5 mb-5">
+      <div className="container mt-2.5 mb-5 px-8 md:px-0">
         <div className="flex justify-between">
           <Link
             className="h3 my-4 d-flex align-items-center gap-1"
@@ -44,36 +39,31 @@ function ProductDetail() {
             <span className="text-xl">Go Back</span>
           </Link>
         </div>
-        <div className="bg-white p-3">
-          <div className="row">
+        <div className="bg-white p-6">
+          <div className="row space-y-3">
             <div className="col-lg-5">
-              <div className="flex gap-x-3 p-3">
-                <ul className="flex justify-between flex-col">
-                  {Array.from({ length: 5 }).map((item) => (
-                    <li key={item}>
-                      <div className="h-24 w-24 rounded-lg shadow-sm">
-                        <img
-                          className="h-full w-full object-cover rounded-md"
-                          src={product.image}
-                          alt={product.alt}
-                        />
-                      </div>
+              <div className="">
+                <div className="main-image">
+                  <img src={product.image} alt={product.alt} className="h-[500px] object-cover" />
+                </div>
+                <ul className="flex justify-between gap-2 mt-6">
+                  {Array.from({ length: 4 }).map((item) => (
+                    <li
+                      key={item}
+                      className="h-16 w-16 md:h-24 md:w-24 rounded-lg shadow-sm"
+                    >
+                      <img
+                        className="h-full w-full object-cover rounded-md"
+                        src={product.image}
+                        alt={product.alt}
+                      />
                     </li>
                   ))}
                 </ul>
-                <div className="main-image">
-                  <img
-                    className="card-img-top"
-                    style={style}
-                    src={product.image}
-                    height={300}
-                    alt={product.alt}
-                  />
-                </div>
               </div>
             </div>
-            <div className="card-body col-lg-7">
-              <h4 className="text-5xl my-2.5">{product.name}</h4>
+            <div className="col-lg-7">
+              <h4 className="text-3xl md:text-5xl my-2.5">{product.name}</h4>
               <Rating />
               <h6 className="h6">{product.brand}</h6>
               <p className="mb-3 font-light pr-5">
@@ -92,10 +82,7 @@ function ProductDetail() {
               </p>
               <div className="flex gap-1 my-2.5">
                 {["pink", "green", "blue", "purple"].map((item, index) => (
-                  <label
-                    key={`${item}-${index}`}
-                    htmlFor={`color-${item}`}
-                  >
+                  <label key={`${item}-${index}`} htmlFor={`color-${item}`}>
                     <input
                       type="radio"
                       name="color"

@@ -69,8 +69,8 @@ function Contact() {
               </form>
             </div>
           </div>
-          <div className="col-md-6">
-            <div className="row">
+          <div className="col-md-6 mt-4 md:mt-0">
+            <div className="row space-y-3">
               {details.map(({ label, value, icon }) => (
                 <div className="col-md-4 px-0" key={label}>
                   <div className="flex gap-x-2 items-center">
