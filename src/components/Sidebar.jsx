@@ -22,25 +22,11 @@ export default function SideBar({ onChange }) {
     onChange(filter, value);
   };
 
-  const bgMap = {
-    pink: "bg-pink-200",
-    green: "bg-green-200",
-    blue: "bg-blue-200",
-    purple: "bg-purple-200",
-  };
-
-  const ringMap = {
-    pink: "peer-checked:ring-pink-400",
-    green: "peer-checked:ring-green-400",
-    blue: "peer-checked:ring-blue-400",
-    purple: "peer-checked:ring-purple-400",
-  };
-
   return (
     <div className="flex flex-col bg-white p-8 rounded-md h-full space-y-0 md:space-y-4">
       <div className=" border-b border-gray-200 pb-3 flex justify-between items-center">
         <h2 className="text-2xl">Filters By</h2>
-        <button className="text-sm text-red-500 hover:text-red-600" onClick={clearFilter}>
+        <button className="text-sm text-red-500 hover:text-red-600">
           x Clear
         </button>
       </div>
