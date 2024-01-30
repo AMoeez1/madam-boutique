@@ -81,6 +81,7 @@ export const CartProvider = ({ children }) => {
       const newItems = [...items];
       newItems.splice(itemIndex, 1);
       setItems(newItems);
+      localStorage.removeItem('cart')
     }
   };
 
