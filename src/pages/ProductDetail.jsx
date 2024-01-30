@@ -1,13 +1,10 @@
-// import Black from '../assets/Products/BlackPant1.jpg'
-import Layout from "../components/Layout";
-import { Link, useParams } from "react-router-dom";
-import ProductsData from "../data/ProductsData";
 import { useContext, useEffect, useState } from "react";
-import { CartContext } from "../context/CartContext";
 import { IoMdArrowRoundBack } from "react-icons/io";
-import { toast } from "react-toastify";
-import TrendingData from "../data/TrendingData";
+import { Link, useParams } from "react-router-dom";
 import { ProductItem } from "../components/HomeProducts";
+import Layout from "../components/Layout";
+import { CartContext } from "../context/CartContext";
+import { products, trendingProducts } from "../data/products";
 
 function ProductDetail() {
   const { productId } = useParams();
@@ -15,9 +12,7 @@ function ProductDetail() {
   const { addItemToCart } = useContext(CartContext);
 
   useEffect(() => {
-    const filteredProducts = ProductsData.filter(
-      (prod) => prod.id == productId
-    );
+    const filteredProducts = products.filter((prod) => prod.id == productId);
     if (filteredProducts.length > 0) {
       setProduct(filteredProducts[0]);
     }
@@ -44,7 +39,11 @@ function ProductDetail() {
             <div className="col-lg-5">
               <div className="">
                 <div className="main-image">
-                  <img src={product.image} alt={product.alt} className="h-[500px] object-cover" />
+                  <img
+                    src={product.image}
+                    alt={product.alt}
+                    className="h-[500px] object-cover"
+                  />
                 </div>
                 <ul className="flex justify-between gap-2 mt-6">
                   {Array.from({ length: 4 }).map((item) => (
@@ -122,7 +121,7 @@ function ProductDetail() {
         <div className="container mt-5">
           <div className="row bg-white p-3 rounded-md">
             <h3 className="text-3xl my-6">Related Products</h3>
-            {TrendingData.map((item) => (
+            {trendingProducts .map((item) => (
               <ProductItem key={item.id} product={item} md={3} />
             ))}
           </div>

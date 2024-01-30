@@ -1,6 +1,11 @@
 import Logo from "../assets/MadamLogo.png";
 import { Link } from "react-router-dom";
+import { FiShoppingCart } from "react-icons/fi";
+import { useContext } from "react";
+import { CartContext } from "../context/CartContext";
+
 function Navbar() {
+  const {getCartItemsCount} = useContext(CartContext)
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-white">
       <div className="container">
@@ -36,8 +41,11 @@ function Navbar() {
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to={"/cart"}>
-                Cart
+              <Link className="nav-link relative " to={"/cart"}>
+                <span className="h-4 w-4 absolute -top-1 right-0 bg-black text-xs text-white flex justify-center items-center rounded-full">
+                  {getCartItemsCount()}
+                </span>
+                <FiShoppingCart size={24}/>
               </Link>
             </li>
           </ul>
