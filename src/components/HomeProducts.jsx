@@ -1,25 +1,14 @@
-import { Link, NavLink } from "react-router-dom";
-
-// DAta Files
-import RecommendedData from "../data/RecommendedData.jsx";
-import TrendData from "../data/TrendingData.jsx";
-import SaleData from "../data/SaleProducts.jsx";
-
-// React Icons
+import { useContext } from "react";
 import { BiSolidOffer } from "react-icons/bi";
 import { FaFire } from "react-icons/fa";
 import { MdRecommend } from "react-icons/md";
-import Countdown from "./Countdown.jsx";
-import { FiShoppingCart } from "react-icons/fi";
-import { useContext } from "react";
+import { Link, NavLink } from "react-router-dom";
 import { CartContext } from "../context/CartContext.jsx";
-import { clsx } from "clsx";
+import { onSaleProducts, recommendedProducts, trendingProducts } from "../data/products.js";
+import Countdown from "./Countdown.jsx";
 
 function HomeProducts() {
-  const Recommend = RecommendedData;
-  const Trend = TrendData;
-  const Sale = SaleData;
-
+  
   return (
     <div className="container my-5">
       <div className="mt-5">
@@ -30,7 +19,7 @@ function HomeProducts() {
               <h3 className="h3">Recommended for you </h3>
             </div>
           </div>
-          {Recommend.map((item) => (
+          {recommendedProducts.map((item) => (
             <ProductItem key={item.id} product={item} md={3} />
           ))}
         </div>
@@ -43,7 +32,7 @@ function HomeProducts() {
               <h3 className="h3">Trending Products</h3>
             </div>
           </div>
-          {Trend.map((item) => (
+          {trendingProducts.map((item) => (
             <ProductItem key={item.id} product={item} md={3} />
           ))}
         </div>
@@ -57,7 +46,7 @@ function HomeProducts() {
               <h3 className="h3">On Sale Products</h3>
             </div>
           </div>
-          {Sale.map((item) => (
+          {onSaleProducts.map((item) => (
             <ProductItem key={item.id} product={item} md={3} />
           ))}
         </div>
