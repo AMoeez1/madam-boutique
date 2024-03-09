@@ -7,7 +7,7 @@ function Countdown() {
   const [mins, setMins] = useState(0);
   const [secs, setSecs] = useState(0);
 
-  const date = "Febraury, 29, 2024";
+  const date = "May, 29, 2024";
 
   const getTime = () => {
     const time = Date.parse(date) - Date.now();

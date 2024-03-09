@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { createContext, useEffect, useState } from "react";
 import { products } from "../data/products";
 import { toast } from "react-toastify";
@@ -27,9 +28,7 @@ export const CartProvider = ({ children }) => {
    * Whenever items update, update local storage as well, calculate total
    */
   useEffect(() => {
-    if (items.length > 0) {
-      localStorage.setItem("cart", JSON.stringify(items));
-    }
+    localStorage.setItem("cart", JSON.stringify(items));
     getTotalPrice();
   }, [items]);
 
@@ -90,7 +89,8 @@ export const CartProvider = ({ children }) => {
     const itemIndex = items.findIndex((item) => item.id === id);
     if (itemIndex > -1) {
       let newItems = [...items];
-      newItems.splice(itemIndex, 1);
+      newItems = newItems.splice(itemIndex, 1);
+      console.log(newItems);
       setItems(newItems);
     }
   };
